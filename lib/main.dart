@@ -12,21 +12,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Solve.it',
-      debugShowCheckedModeBanner: false, // Menghilangkan banner debug
+      debugShowCheckedModeBanner: false,
 
       theme: ThemeData(
-        // 1. Font default untuk seluruh aplikasi (Kriteria 5)
         fontFamily: 'Poppins',
-
-        // 2. Latar belakang Scaffold dibuat transparan
-        //    agar gradient dari MainBackground bisa terlihat.
         scaffoldBackgroundColor: Colors.transparent,
-
-        // 3. Mengatur tema dasar ke gelap
         brightness: Brightness.dark,
       ),
 
-      // 4. Memulai aplikasi dari WelcomeScreen (Halaman 1)
       home: const WelcomeScreen(),
     );
   }

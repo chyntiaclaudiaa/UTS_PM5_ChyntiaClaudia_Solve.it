@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import '../widgets/primary_button.dart';
-// import 'home_screen.dart'; // Navigasi dinonaktifkan untuk sementara
+import 'home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -79,6 +79,22 @@ class WelcomeScreen extends StatelessWidget {
                     text: "Let's Get Started",
                     onPressed: () {
                       String userName = nameController.text.trim();
+                      if (userName.isNotEmpty) {
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(userName: userName),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please enter your name!'),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                      }
                     },
                   ),
                 ],
