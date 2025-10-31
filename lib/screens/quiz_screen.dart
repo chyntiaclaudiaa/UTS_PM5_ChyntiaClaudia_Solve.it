@@ -4,10 +4,11 @@ import 'package:uts_pm5_slove_it/models/question_model.dart';
 import 'package:uts_pm5_slove_it/widgets/answer_option.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
-// import 'score_screen.dart'; // Nanti untuk halaman skor
+import 'score_screen.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+  final String userName;
+  const QuizScreen({super.key, required this.userName});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -54,7 +55,17 @@ class _QuizScreenState extends State<QuizScreen> {
         _currentQuestionIndex++;
       } else {
         print('Kuis Selesai! Skor: $_score');
-        // TODO: Navigasi ke ScoreScreen (Halaman 4)
+
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ScoreScreen(
+              score: _score,
+              totalQuestions: quizQuestions.length,
+              userName: widget.userName,
+            ),
+          ),
+        );
       }
     });
   }
