@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/mode_button.dart';
+import 'quiz_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String userName;
@@ -72,17 +73,23 @@ class HomeScreen extends StatelessWidget {
                         imagePath: 'assets/images/freeplay.png',
                         gradientColors: const [kGreenLight, kGreenDark],
                         onPressed: () {
-                          print('Mode Free Play Dipilih oleh $userName');
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const QuizScreen()),
+                          );
                         },
                       ),
                       const SizedBox(height: 20),
 
+
                       ModeButton(
+
                         text: 'Challenge',
                         imagePath: 'assets/images/challenge.png',
                         gradientColors: const [kOrangeLight, kOrangeDark],
                         onPressed: () {
-                          print('Mode Challenge Dipilih oleh $userName');
+                          print('Tombol Challenge ditekan oleh $userName. (Navigasi non-aktif)');
+                          // TODO: Buat ChallengeScreen (QuizScreen dengan timer)
                         },
                       ),
                     ],
