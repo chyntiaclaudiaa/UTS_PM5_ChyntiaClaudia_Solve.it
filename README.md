@@ -73,6 +73,7 @@ Berikut adalah tangkapan layar utama dari aplikasi Solve.it:
     <td><img src="assets/readme_images/score_screen.png" alt="Score Screen" width="200"></td>
   </tr>
 </table>
+
 ---
 
 ## 🎨 Credit ke Sumber Aset
