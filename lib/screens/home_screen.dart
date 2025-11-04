@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:uts_pm5_slove_it/providers/user_provider.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/mode_button.dart';
 
 class HomeScreen extends StatelessWidget {
-  final String userName;
-
-  const HomeScreen({super.key, required this.userName});
+  const HomeScreen({super.key, required String userName});
 
   static const Color kGreenLight = Color(0xFF9DFF4F);
   static const Color kGreenDark = Color(0xFF1ABD00);
@@ -15,6 +15,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String userName = context.watch<UserProvider>().userName;
+
     return MainBackground(
       child: Scaffold(
         body: SafeArea(
@@ -72,16 +74,12 @@ class HomeScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 32),
 
-                              // --- 3. PERBAIKI NAVIGASI FREE PLAY ---
                               ModeButton(
                                 text: 'Free Play',
                                 imagePath: 'assets/images/freeplay.png',
                                 gradientColors: const [kGreenLight, kGreenDark],
                                 onPressed: () {
-                                  context.pushNamed(
-                                    'quiz',
-                                    pathParameters: {'userName': userName},
-                                  );
+                                  context.pushNamed('quiz');
                                 },
                               ),
 
@@ -92,10 +90,7 @@ class HomeScreen extends StatelessWidget {
                                 imagePath: 'assets/images/challenge.png',
                                 gradientColors: const [kOrangeLight, kOrangeDark],
                                 onPressed: () {
-                                  context.pushNamed(
-                                    'challenge',
-                                    pathParameters: {'userName': userName},
-                                  );
+                                  context.pushNamed('challenge');
                                 },
                               ),
                             ],

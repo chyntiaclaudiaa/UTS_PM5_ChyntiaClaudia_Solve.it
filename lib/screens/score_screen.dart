@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import 'package:uts_pm5_slove_it/providers/user_provider.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
 
 class ScoreScreen extends StatelessWidget {
   final int score;
   final int totalQuestions;
-  final String userName;
-
   const ScoreScreen({
     super.key,
     required this.score,
-    required this.totalQuestions,
-    required this.userName,
+    required this.totalQuestions, required String userName,
   });
 
   @override
   Widget build(BuildContext context) {
+    final String userName = context.watch<UserProvider>().userName;
+
     final double percentage = score / totalQuestions;
 
     return MainBackground(
@@ -81,9 +82,7 @@ class ScoreScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-
                         const SizedBox(height: 50),
-
                         const Text(
                           'Congratulation',
                           textAlign: TextAlign.center,
@@ -103,16 +102,11 @@ class ScoreScreen extends StatelessWidget {
                             color: Colors.white70,
                           ),
                         ),
-
                         const SizedBox(height: 80),
-
                         PrimaryButton(
                           text: 'Back to Home',
                           onPressed: () {
-                            context.goNamed(
-                              'home',
-                              pathParameters: {'userName': userName},
-                            );
+                            context.goNamed('home');
                           },
                         ),
                       ],

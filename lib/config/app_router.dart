@@ -1,5 +1,4 @@
 import 'package:go_router/go_router.dart';
-import 'package:flutter/material.dart';
 
 import 'package:uts_pm5_slove_it/screens/splash_screen.dart';
 import 'package:uts_pm5_slove_it/screens/welcome_screen.dart';
@@ -21,40 +20,37 @@ class AppRouter {
         path: '/welcome',
         builder: (context, state) => const WelcomeScreen(),
       ),
+
       GoRoute(
-        path: '/home/:userName',
+        path: '/home',
         name: 'home',
         builder: (context, state) {
-          final userName = state.pathParameters['userName']!;
-          return HomeScreen(userName: userName);
+          return const HomeScreen(userName: '',);
         },
         routes: [
+          // Rute: /home/quiz
           GoRoute(
             path: 'quiz',
             name: 'quiz',
             builder: (context, state) {
-              final userName = state.pathParameters['userName']!;
-              return QuizScreen(userName: userName);
+              return const QuizScreen(userName: '',);
             },
           ),
           GoRoute(
             path: 'challenge',
             name: 'challenge',
             builder: (context, state) {
-              final userName = state.pathParameters['userName']!;
-              return ChallengeScreen(userName: userName);
+              return const ChallengeScreen(userName: '',);
             },
           ),
           GoRoute(
             path: 'score',
             name: 'score',
             builder: (context, state) {
-              final userName = state.pathParameters['userName']!;
               final Map<String, int> scoreData = state.extra as Map<String, int>;
               return ScoreScreen(
                 score: scoreData['score']!,
-                totalQuestions: scoreData['totalQuestions']!,
-                userName: userName,
+                totalQuestions: scoreData['totalQuestions']!, userName: '',
               );
             },
           ),
