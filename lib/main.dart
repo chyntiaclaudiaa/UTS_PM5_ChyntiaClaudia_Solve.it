@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uts_pm5_slove_it/screens/welcome_screen.dart';
+import 'package:uts_pm5_slove_it/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
 
-      home: const WelcomeScreen(),
+      home: const SplashScreen(),
     );
   }
 }
