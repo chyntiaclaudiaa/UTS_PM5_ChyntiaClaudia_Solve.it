@@ -8,7 +8,8 @@ import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
 
 class ChallengeScreen extends StatefulWidget {
-  const ChallengeScreen({super.key, required String userName});
+  final String userName;
+  const ChallengeScreen({super.key, required this.userName});
 
   @override
   State<ChallengeScreen> createState() => _ChallengeScreenState();
@@ -19,9 +20,11 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   int? _selectedAnswerIndex;
   bool _showCorrectness = false;
   int _score = 0;
+
   Timer? _timer;
   static const int _timePerQuestion = 10;
   int _secondsRemaining = _timePerQuestion;
+
 
   @override
   void initState() {
@@ -37,6 +40,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
 
   void _showTimesUpDialog() {
     _timer?.cancel();
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -110,6 +114,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
   void _startTimer() {
     _timer?.cancel();
     _secondsRemaining = _timePerQuestion;
+
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (_secondsRemaining > 0) {
         setState(() {
@@ -123,6 +128,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
 
   void _onAnswerTapped(int index) {
     if (_showCorrectness) return;
+
     setState(() {
       _selectedAnswerIndex = index;
     });
@@ -143,13 +149,16 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
       } else {
         _timer?.cancel();
 
+        // --- 3. PERBAIKI NAVIGASI (MENGGUNAKAN GO_ROUTER) ---
         context.goNamed(
           'score',
+          pathParameters: {'userName': widget.userName},
           extra: {
             'score': _score,
             'totalQuestions': quizQuestions.length,
           },
         );
+        // --- AKHIR PERBAIKAN ---
       }
     });
   }
@@ -165,11 +174,13 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
         );
         return;
       }
+
       if (!_showCorrectness) {
         _timer?.cancel();
         _showCorrectness = true;
         return;
       }
+
       _goToNextQuestion();
     });
   }
@@ -182,6 +193,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
     return MainBackground(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           title: Text('Level ${_currentQuestionIndex + 1}'),
           centerTitle: true,
         ),

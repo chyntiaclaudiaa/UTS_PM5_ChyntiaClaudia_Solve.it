@@ -7,7 +7,8 @@ import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
 
 class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key, required String userName});
+  final String userName;
+  const QuizScreen({super.key, required this.userName});
 
   @override
   State<QuizScreen> createState() => _QuizScreenState();
@@ -55,6 +56,7 @@ class _QuizScreenState extends State<QuizScreen> {
       } else {
         context.goNamed(
           'score',
+          pathParameters: {'userName': widget.userName},
           extra: {
             'score': _score,
             'totalQuestions': quizQuestions.length,
@@ -72,6 +74,8 @@ class _QuizScreenState extends State<QuizScreen> {
     return MainBackground(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
           title: Text('Level ${_currentQuestionIndex + 1}'),
           centerTitle: true,
         ),
@@ -83,7 +87,7 @@ class _QuizScreenState extends State<QuizScreen> {
               LinearProgressIndicator(
                 value: progress,
                 backgroundColor: Colors.white24,
-                valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF00C6FF)),
+                valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
               ),
               const SizedBox(height: 40),
 

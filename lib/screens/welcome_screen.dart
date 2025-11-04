@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import 'package:uts_pm5_slove_it/providers/user_provider.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import '../widgets/primary_button.dart';
 
@@ -51,7 +49,7 @@ class WelcomeScreen extends StatelessWidget {
                       fontSize: 23,
                       fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.italic,
-                      color: Colors.white, // (Biarkan hardcode)
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 20),
@@ -75,11 +73,15 @@ class WelcomeScreen extends StatelessWidget {
                     text: "Let's Get Started",
                     onPressed: () {
                       String userName = nameController.text.trim();
+                      if (userName.isEmpty) {
+                        // Ganti nama kosong jadi "Guest"
+                        userName = "Guest";
+                      }
 
-                      context.read<UserProvider>().setUserName(userName);
-
-                      context.go('/home');
-
+                      context.goNamed(
+                        'home',
+                        pathParameters: {'userName': userName},
+                      );
                     },
                   ),
                 ],
