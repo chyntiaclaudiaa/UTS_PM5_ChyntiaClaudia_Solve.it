@@ -33,6 +33,8 @@ Aplikasi ini mencakup alur lengkap mulai dari memasukkan nama, memilih mode, men
 ### Video Demo
 
 [![Demo Aplikasi Solve.it](https://img.youtube.com/vi/NgDYLVDKOYI/0.jpg)](https://www.youtube.com/watch?v=NgDYLVDKOYI)
+
+
 *(Klik gambar di atas untuk melihat demo video aplikasi)*
 
 ### Screenshot
