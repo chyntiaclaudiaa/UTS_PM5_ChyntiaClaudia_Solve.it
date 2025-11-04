@@ -74,8 +74,12 @@ class WelcomeScreen extends StatelessWidget {
                     onPressed: () {
                       String userName = nameController.text.trim();
                       if (userName.isEmpty) {
-                        // Ganti nama kosong jadi "Guest"
-                        userName = "Guest";
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Please enter your name before continuing!'),
+                          ),
+                        );
+                        return;
                       }
 
                       context.goNamed(

@@ -15,112 +15,126 @@ class ScoreScreen extends StatelessWidget {
     required this.userName,
   });
 
+  String getFeedback() {
+    final double percentage = score / totalQuestions;
+    if (percentage == 1) return "Perfect!";
+    if (percentage >= 0.75) return "Great job!";
+    if (percentage >= 0.5) return "Good effort!";
+    return "Keep practicing!";
+  }
+
   @override
   Widget build(BuildContext context) {
     final double percentage = score / totalQuestions;
 
     return MainBackground(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 30.0,
-              vertical: 50.0,
-            ),
-            child: LayoutBuilder(
-              builder: (context, viewportConstraints) {
-                return SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: viewportConstraints.maxHeight,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Center(
-                          child: SizedBox(
-                            height: 200,
-                            width: 200,
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                CircularProgressIndicator(
-                                  value: 1.0,
-                                  strokeWidth: 15,
-                                  backgroundColor: Colors.white.withOpacity(0.1),
-                                ),
-                                CircularProgressIndicator(
-                                  value: percentage,
-                                  strokeWidth: 15,
-                                  valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF00C6FF)),
-                                ),
-                                Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Text(
-                                        'Your Score',
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: Colors.white70,
-                                        ),
-                                      ),
-                                      Text(
-                                        '$score/$totalQuestions',
-                                        style: const TextStyle(
-                                          fontSize: 40,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
+          child: LayoutBuilder(
+            builder: (context, viewportConstraints) {
+              return SingleChildScrollView(
+                // 🔥 PERBAIKAN OVERFLOW: Padding dipindahkan ke sini
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 30.0,
+                  vertical: 50.0,
+                ),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    // MinHeight agar konten mengisi viewport
+                    minHeight: viewportConstraints.maxHeight - 50.0 * 2,
+                  ),
+                  child: Column(
+                    // 🔥 PERBAIKAN RESPONSIF: Menggunakan spaceBetween
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Column( // Bagian atas (Score dan Feedback)
+                        children: [
+                          Center(
+                            child: SizedBox(
+                              height: 200,
+                              width: 200,
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  CircularProgressIndicator(
+                                    value: 1.0,
+                                    strokeWidth: 15,
+                                    backgroundColor: Colors.white.withOpacity(0.1),
                                   ),
-                                ),
-                              ],
+                                  CircularProgressIndicator(
+                                    value: percentage,
+                                    strokeWidth: 15,
+                                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF00C6FF)),
+                                  ),
+                                  Center(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          'Your Score',
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.white70,
+                                          ),
+                                        ),
+                                        Text(
+                                          '$score/$totalQuestions',
+                                          style: const TextStyle(
+                                            fontSize: 40,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
 
-                        const SizedBox(height: 50),
+                          const SizedBox(height: 50),
 
-                        const Text(
-                          'Congratulation',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                          Text(
+                            'Congratulation!',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 32,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          'Great job, $userName! You Did It',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white70,
+                          const SizedBox(height: 8),
+                          Text(
+                            '${getFeedback()} Great job, $userName! You Did It',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white70,
+                            ),
                           ),
-                        ),
+                        ],
+                      ),
 
-                        const SizedBox(height: 80),
+                      const SizedBox(height: 80),
 
-                        PrimaryButton(
-                          text: 'Back to Home',
-                          onPressed: () {
-                            context.goNamed(
-                              'home',
-                              pathParameters: {'userName': userName},
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                      PrimaryButton(
+                        text: 'Back to Home',
+                        onPressed: () {
+                          context.goNamed(
+                            'home',
+                            pathParameters: {'userName': userName},
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
         ),
       ),

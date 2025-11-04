@@ -52,8 +52,6 @@ const List<QuestionModel> quizQuestions = [
     correctAnswerIndex: 3,
   ),
 
-  // --- 5 PERTANYAAN TAMBAHAN ---
-
   QuestionModel(
     text: "Who painted the Mona Lisa?",
     options: [

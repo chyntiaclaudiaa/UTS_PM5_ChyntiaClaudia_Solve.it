@@ -73,13 +73,14 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return MainBackground(
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
           title: Text('Level ${_currentQuestionIndex + 1}'),
           centerTitle: true,
         ),
-        body: Padding(
+        body: SingleChildScrollView(
           padding: const EdgeInsets.all(24.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -137,7 +138,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 })
                     : null,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 8),
 
               PrimaryButton(
                 text: _showCorrectness ? 'Next' : 'Check Answer',

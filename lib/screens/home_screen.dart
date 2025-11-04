@@ -72,13 +72,12 @@ class HomeScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 32),
 
-                              // --- 3. PERBAIKI NAVIGASI FREE PLAY ---
                               ModeButton(
                                 text: 'Free Play',
                                 imagePath: 'assets/images/freeplay.png',
                                 gradientColors: const [kGreenLight, kGreenDark],
                                 onPressed: () {
-                                  context.pushNamed(
+                                  context.goNamed(
                                     'quiz',
                                     pathParameters: {'userName': userName},
                                   );
