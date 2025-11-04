@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
-import 'welcome_screen.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,10 +20,9 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void _navigateToHome() {
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const WelcomeScreen()),
-      );
+      if (mounted) {
+        context.go('/welcome');
+      }
     });
   }
 
@@ -39,8 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 height: 50,
               ),
               const SizedBox(height: 16),
-
-              // 2. Tagline
               const Text(
                 'Interesting QUIZ Awaits You',
                 textAlign: TextAlign.center,
@@ -51,7 +49,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 ),
               ),
               const SizedBox(height: 50),
-
               Image.asset(
                 'assets/images/logo_solveit.png',
                 height: 250,

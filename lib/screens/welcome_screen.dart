@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import '../widgets/primary_button.dart';
-import 'home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -15,7 +15,6 @@ class WelcomeScreen extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(24.0),
-
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -37,15 +36,12 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 50),
-
                   Image.asset(
                     'assets/images/logo_solveit.png',
                     height: 250,
                     fit: BoxFit.contain,
                   ),
-
                   const SizedBox(height: 60),
-
                   const Text(
                     'What should we call you?',
                     textAlign: TextAlign.center,
@@ -57,7 +53,6 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 20),
-
                   TextField(
                     controller: nameController,
                     textAlign: TextAlign.center,
@@ -74,27 +69,19 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-
                   PrimaryButton(
                     text: "Let's Get Started",
                     onPressed: () {
                       String userName = nameController.text.trim();
-                      if (userName.isNotEmpty) {
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(userName: userName),
-                          ),
-                        );
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Please enter your name!'),
-                            backgroundColor: Colors.red,
-                          ),
-                        );
+                      if (userName.isEmpty) {
+                        // Ganti nama kosong jadi "Guest"
+                        userName = "Guest";
                       }
+
+                      context.goNamed(
+                        'home',
+                        pathParameters: {'userName': userName},
+                      );
                     },
                   ),
                 ],

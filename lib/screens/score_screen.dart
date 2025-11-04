@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
-import 'home_screen.dart';
 
 class ScoreScreen extends StatelessWidget {
   final int score;
@@ -109,12 +109,9 @@ class ScoreScreen extends StatelessWidget {
                         PrimaryButton(
                           text: 'Back to Home',
                           onPressed: () {
-                            Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => HomeScreen(userName: userName),
-                              ),
-                                  (route) => false,
+                            context.goNamed(
+                              'home',
+                              pathParameters: {'userName': userName},
                             );
                           },
                         ),

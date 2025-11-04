@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/mode_button.dart';
-import 'challenge_screen.dart';
-import 'quiz_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final String userName;
@@ -21,17 +20,13 @@ class HomeScreen extends StatelessWidget {
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(24.0),
-
             child: LayoutBuilder(
               builder: (context, viewportConstraints) {
-
                 return SingleChildScrollView(
-
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: viewportConstraints.maxHeight,
                     ),
-
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -56,7 +51,6 @@ class HomeScreen extends StatelessWidget {
                           height: 200,
                         ),
                         const SizedBox(height: 50),
-
                         Container(
                           padding: const EdgeInsets.all(24.0),
                           decoration: BoxDecoration(
@@ -78,19 +72,19 @@ class HomeScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 32),
 
+                              // --- 3. PERBAIKI NAVIGASI FREE PLAY ---
                               ModeButton(
                                 text: 'Free Play',
                                 imagePath: 'assets/images/freeplay.png',
                                 gradientColors: const [kGreenLight, kGreenDark],
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => QuizScreen(userName: userName),
-                                    ),
+                                  context.pushNamed(
+                                    'quiz',
+                                    pathParameters: {'userName': userName},
                                   );
                                 },
                               ),
+
                               const SizedBox(height: 20),
 
                               ModeButton(
@@ -98,11 +92,9 @@ class HomeScreen extends StatelessWidget {
                                 imagePath: 'assets/images/challenge.png',
                                 gradientColors: const [kOrangeLight, kOrangeDark],
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => ChallengeScreen(userName: userName),
-                                    ),
+                                  context.pushNamed(
+                                    'challenge',
+                                    pathParameters: {'userName': userName},
                                   );
                                 },
                               ),

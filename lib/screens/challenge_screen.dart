@@ -1,12 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uts_pm5_slove_it/data/quiz_dummy.dart';
 import 'package:uts_pm5_slove_it/models/question_model.dart';
 import 'package:uts_pm5_slove_it/widgets/answer_option.dart';
 import 'package:uts_pm5_slove_it/widgets/main_background.dart';
 import 'package:uts_pm5_slove_it/widgets/primary_button.dart';
-import 'score_screen.dart';
-import 'home_screen.dart';
 
 class ChallengeScreen extends StatefulWidget {
   final String userName;
@@ -149,16 +148,17 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
         _startTimer();
       } else {
         _timer?.cancel();
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ScoreScreen(
-              score: _score,
-              totalQuestions: quizQuestions.length,
-              userName: widget.userName,
-            ),
-          ),
+
+        // --- 3. PERBAIKI NAVIGASI (MENGGUNAKAN GO_ROUTER) ---
+        context.goNamed(
+          'score',
+          pathParameters: {'userName': widget.userName},
+          extra: {
+            'score': _score,
+            'totalQuestions': quizQuestions.length,
+          },
         );
+        // --- AKHIR PERBAIKAN ---
       }
     });
   }
@@ -305,4 +305,3 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
     );
   }
 }
-
