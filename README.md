@@ -39,29 +39,38 @@ Aplikasi ini mencakup alur lengkap mulai dari memasukkan nama, memilih mode, men
 
 Berikut adalah tangkapan layar utama dari aplikasi Solve.it:
 
-* Splash Screen:
-  ![Splash Screen](assets/readme_images/splash_screen.png)
-
-* Welcome Screen:
-  ![Welcome Screen](assets/readme_images/welcome_screen.png)
-
-* Home Screen:
-  ![Home Screen](assets/readme_images/home_screen.png)
-
-* Quiz (Free Play):
-  ![Free Play](assets/readme_images/quiz_screen.png)
-
-* Quiz (Jawaban Benar):
-  ![Quiz Answer](assets/readme_images/quiz_screen_answer.png)
-
-* Quiz (Challenge):
-  ![Challenge Mode](assets/readme_images/challenge_screen.png)
-
-* Time's Up! Pop-up:
-  ![Time's Up!](assets/readme_images/times_up_screen.png)
-
-* Score Screen:
-  ![Score Screen](assets/readme_images/score_screen.png)
+<table align="center">
+<tr>
+<td align="center"><strong>Splash Screen</strong></td>
+<td align="center"><strong>Welcome Screen</strong></td>
+<td align="center"><strong>Home Screen</strong></td>
+</tr>
+<tr>
+<td><img src="assets/readme_images/splash_screen.png" alt="Splash Screen" width="250"></td>
+<td><img src="assets/readme_images/welcome_screen.png" alt="Welcome Screen" width="250"></td>
+<td><img src="assets/readme_images/home_screen.png" alt="Home Screen" width="250"></td>
+</tr>
+<tr>
+<td align="center"><strong>Quiz (Free Play)</strong></td>
+<td align="center"><strong>Quiz (Jawaban Benar)</strong></td>
+<td align="center"><strong>Quiz (Challenge)</strong></td>
+</tr>
+<tr>
+<td><img src="assets/readme_images/quiz_screen.png" alt="Free Play" width="250"></td>
+<td><img src="assets/readme_images/quiz_screen_answer.png" alt="Quiz Answer" width="250"></td>
+<td><img src="assets/readme_images/challenge_screen.png" alt="Challenge Mode" width="250"></td>
+</tr>
+<tr>
+<td align="center"><strong>Time's Up! Pop-up</strong></td>
+<td align="center"><strong>Score Screen</strong></td>
+<td align="center"><em>(Kosong)</em></td>
+</tr>
+<tr>
+<td><img src="assets/readme_images/times_up_screen.png" alt="Time's Up!" width="250"></td>
+<td><img src="assets/readme_images/score_screen.png" alt="Score Screen" width="250"></td>
+<td></td>
+</tr>
+</table>
 ---
 
 ## 🎨 Credit ke Sumber Aset
