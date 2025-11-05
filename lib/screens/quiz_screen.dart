@@ -32,7 +32,7 @@ class _QuizScreenState extends State<QuizScreen> {
       if (_selectedAnswerIndex == null) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Please select an answer!'),
+            content: Text('Please select an answer!', style: TextStyle(fontFamily: 'Poppins')),
             backgroundColor: Colors.orange,
           ),
         );
@@ -77,7 +77,10 @@ class _QuizScreenState extends State<QuizScreen> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          title: Text('Level ${_currentQuestionIndex + 1}'),
+          title: Text(
+            'Level ${_currentQuestionIndex + 1}',
+            style: const TextStyle(fontFamily: 'Poppins'),
+          ),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
@@ -96,6 +99,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 currentQuestion.text,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
+                  fontFamily: 'Poppins',
                   fontSize: 26,
                   fontWeight: FontWeight.w600,
                   color: Colors.white,
@@ -130,6 +134,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         : "Wrong! The correct answer is $correctAnswerText.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Poppins',
                       color: isCorrect ? Colors.greenAccent : Colors.redAccent,
                       fontSize: 14,
                       fontWeight: FontWeight.w500,

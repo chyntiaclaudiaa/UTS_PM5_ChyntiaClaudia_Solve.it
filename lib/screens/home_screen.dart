@@ -40,6 +40,7 @@ class HomeScreen extends StatelessWidget {
                           'Interesting QUIZ Awaits You',
                           textAlign: TextAlign.center,
                           style: TextStyle(
+                            fontFamily: 'Poppins',
                             fontSize: 17,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
@@ -64,6 +65,7 @@ class HomeScreen extends StatelessWidget {
                                 'Hi, $userName! 👋\nDiscover your game style: Challenge or Free Play. Begin your quest!',
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
+                                  fontFamily: 'Poppins',
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Colors.white,

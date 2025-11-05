@@ -34,22 +34,19 @@ class ScoreScreen extends StatelessWidget {
           child: LayoutBuilder(
             builder: (context, viewportConstraints) {
               return SingleChildScrollView(
-                // 🔥 PERBAIKAN OVERFLOW: Padding dipindahkan ke sini
                 padding: const EdgeInsets.symmetric(
                   horizontal: 30.0,
                   vertical: 50.0,
                 ),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    // MinHeight agar konten mengisi viewport
                     minHeight: viewportConstraints.maxHeight - 50.0 * 2,
                   ),
                   child: Column(
-                    // 🔥 PERBAIKAN RESPONSIF: Menggunakan spaceBetween
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Column( // Bagian atas (Score dan Feedback)
+                      Column(
                         children: [
                           Center(
                             child: SizedBox(
@@ -77,6 +74,7 @@ class ScoreScreen extends StatelessWidget {
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.white70,
+                                            fontFamily: 'Poppins',
                                           ),
                                         ),
                                         Text(
@@ -85,6 +83,7 @@ class ScoreScreen extends StatelessWidget {
                                             fontSize: 40,
                                             fontWeight: FontWeight.bold,
                                             color: Colors.white,
+                                            fontFamily: 'Poppins',
                                           ),
                                         ),
                                       ],
@@ -104,6 +103,7 @@ class ScoreScreen extends StatelessWidget {
                               fontSize: 32,
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
+                              fontFamily: 'Poppins',
                             ),
                           ),
                           const SizedBox(height: 8),
@@ -114,6 +114,7 @@ class ScoreScreen extends StatelessWidget {
                               fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: Colors.white70,
+                              fontFamily: 'Poppins',
                             ),
                           ),
                         ],

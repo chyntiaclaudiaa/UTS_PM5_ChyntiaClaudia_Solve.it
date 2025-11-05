@@ -38,7 +38,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
         content: const Text(
           "Time's Up! Your answer is marked as incorrect.",
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white70),
+          style: TextStyle(color: Colors.white70, fontFamily: 'Poppins'),
         ),
         actionsAlignment: MainAxisAlignment.center,
         actions: [
@@ -73,7 +73,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                 padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
                 child: const Text(
                   "Next Question",
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold, fontFamily: 'Poppins'),
                 ),
               ),
             ),
@@ -95,7 +96,10 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
               appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
-                title: Text('Level ${quiz.currentQuestionIndex + 1}'),
+                title: Text(
+                  'Level ${quiz.currentQuestionIndex + 1}',
+                  style: const TextStyle(fontFamily: 'Poppins'),
+                ),
                 centerTitle: true,
               ),
               body: SafeArea(
@@ -131,7 +135,8 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                                   style: const TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.white),
+                                      color: Colors.white,
+                                      fontFamily: 'Poppins'),
                                 ),
                               ),
                             ],
@@ -143,7 +148,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                         quiz.currentQuestion.text,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.w600, color: Colors.white),
+                            fontSize: 22, fontWeight: FontWeight.w600, color: Colors.white, fontFamily: 'Poppins'),
                       ),
                       const SizedBox(height: 24),
                       ...List.generate(quiz.currentQuestion.options.length, (index) {
@@ -173,6 +178,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                                   : Colors.redAccent,
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
+                              fontFamily: 'Poppins',
                             ),
                           ),
                         ),
@@ -183,7 +189,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
                             if (quiz.selectedAnswerIndex == null) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
-                                  content: Text('Please select an answer!'),
+                                  content: Text('Please select an answer!', style: TextStyle(fontFamily: 'Poppins')),
                                   backgroundColor: Colors.orange,
                                 ),
                               );

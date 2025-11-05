@@ -50,6 +50,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
+                      fontFamily: 'Poppins',
                     ),
                   ),
                   const SizedBox(height: 50),
@@ -67,16 +68,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.italic,
                       color: Colors.white,
+                      fontFamily: 'Poppins',
                     ),
                   ),
                   const SizedBox(height: 20),
                   TextField(
                     controller: nameController,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Poppins',
+                    ),
                     decoration: InputDecoration(
                       hintText: 'Enter Your Name Here...',
-                      hintStyle: const TextStyle(color: Colors.white54),
+                      hintStyle: const TextStyle(
+                        color: Colors.white54,
+                        fontFamily: 'Poppins',
+                      ),
                       filled: true,
                       fillColor: Colors.white.withOpacity(0.1),
                       border: OutlineInputBorder(
@@ -94,7 +103,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
-                                'Please enter your name before continuing!'),
+                              'Please enter your name before continuing!',
+                              style: TextStyle(fontFamily: 'Poppins'),
+                            ),
                           ),
                         );
                         return;
